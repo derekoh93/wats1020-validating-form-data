@@ -85,7 +85,7 @@ $(document).on('ready', function() {
       //instructions section
       "comments": {
          required: false,
-         maxlenght: 500,
+         maxlength: 500,
       } 
     }
   });
