@@ -8,19 +8,21 @@
 // Refer to the `index.html` file for the validation rules that must be enforced.
 $(document).on('ready', function() {
   //Adding validation to recognize states by abbreviated form
-  $.validator.addMethod("isState", function(value) { 
+  jQuery.validator.addMethod("isState", function(value) { 
   var abrevState = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA",
         "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD",
         "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ",
         "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC",
         "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY",
         "AS", "DC", "FM", "GU", "MH", "MP", "PR", "PW", "VI"];
-  return $.inArray(value,toUpperCase(), states) != -1;
+  return $.inArray(value.toUpperCase(), states) != -1;
   }, "This is not a valid state. Please input State in abbreviated form.");
   
   // For Validation section
-  $('#order-form').validate( {
+  $("#order-form").validate( {
+    
     submitHandler: function(form) {
+      
       form.submit();
     },
     //rules section for form
@@ -47,6 +49,7 @@ $(document).on('ready', function() {
       "your-zip": {
          required: true,
          digits: true,
+         maxlength: 5,
          minlength: 5,
       },
     //payment rules section
@@ -83,7 +86,7 @@ $(document).on('ready', function() {
       "comments": {
          required: false,
          maxlenght: 500,
-      }, 
+      } 
     }
   });
 });
